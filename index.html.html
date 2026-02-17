@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayuri Sharma | Data Science Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { scroll-behavior: smooth; }
+        body { 
+            background-color: #050505; 
+            color: #e2e8f0; 
+            font-family: 'Outfit', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* Animated Mesh Gradient Background */
+        .bg-gradient-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(76, 29, 149, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(13, 148, 136, 0.1) 0px, transparent 50%);
+            z-index: -1;
+        }
+
+        /* New Floating Card Style */
+        .data-card {
+            background: rgba(15, 15, 20, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .data-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #a78bfa, #2dd4bf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Cursor Spotlight */
+        #cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: width 0.3s, height 0.3s;
+        }
+    </style>
+</head>
+<body class="selection:bg-teal-500/30">
+
+    <div class="bg-gradient-mesh"></div>
+    <div id="cursor-glow"></div>
+
+    <nav class="fixed w-full top-0 z-50 border-b border-white/5 bg-black/20 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tight">
+                MAYURI<span class="text-teal-400">.</span>SHARMA
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400 uppercase tracking-widest">
+                <a href="#about" class="hover:text-white transition">Analysis</a>
+                <a href="#projects" class="hover:text-white transition">Insights</a>
+                <a href="#stack" class="hover:text-white transition">Stack</a>
+                <a href="#contact" class="px-5 py-2 border border-teal-500/50 rounded-full text-teal-400 hover:bg-teal-500/10 transition">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="min-h-screen flex items-center px-6 pt-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-widest">
+                    Data Scientist | 2026 Strategy
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9]">
+                    Mining <span class="text-gradient">Wisdom</span> <br>from Chaos.
+                </h1>
+                <p class="text-gray-400 text-xl max-w-xl leading-relaxed mb-10">
+                    I am Mayuri Sharma. I specialize in transforming unstructured data into predictive assets. From statistical modeling to advanced visualization, I build the narrative behind the numbers.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#projects" class="px-8 py-4 bg-teal-500 text-black font-bold rounded-xl hover:bg-teal-400 transition-all shadow-lg shadow-teal-500/20">View Case Studies</a>
+                    <a href="https://github.com/mayuri-sharma" class="px-8 py-4 data-card rounded-xl font-bold flex items-center gap-2">
+                        <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative reveal" style="transition-delay: 200ms;">
+                <div class="data-card p-10 rounded-[2rem] relative z-10">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="space-y-1">
+                            <p class="mono-font text-teal-400 text-sm">Status: Operational</p>
+                            <h3 class="text-2xl font-bold">Model_Training.py</h3>
+                        </div>
+                        <i data-lucide="database" class="text-gray-700 w-10 h-10"></i>
+                    </div>
+                    <div class="mono-font text-sm space-y-4 text-gray-400">
+                        <p><span class="text-purple-400">import</span> pandas <span class="text-purple-400">as</span> pd</p>
+                        <p><span class="text-purple-400">from</span> sklearn <span class="text-purple-400">import</span> metrics</p>
+                        <div class="pl-4 border-l-2 border-teal-500/30 space-y-2">
+                            <p>df = pd.read_csv(<span class="text-teal-400">'insights.csv'</span>)</p>
+                            <p>model = MayuriBrain(precision=<span class="text-orange-400">0.99</span>)</p>
+                            <p>model.fit(df.raw_data)</p>
+                        </div>
+                        <p class="text-teal-400 animate-pulse">>>> Generating insights...</p>
+                    </div>
+                </div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-teal-600/20 blur-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="data-card p-8 rounded-2xl reveal">
+                <h4 class="text-teal-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 01</h4>
+                <div class="text-4xl font-black mb-4">95.4%</div>
+                <p class="text-gray-500 text-sm">Average prediction accuracy across classification models.</p>
+            </div>
+            <div class="data-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
+                <h4 class="text-purple-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 02</h4>
+                <div class="text-4xl font-black mb-4">500GB+</div>
+                <p class="text-gray-500 text-sm">Data pipelines optimized for high-velocity streaming.</p>
+            </div>
+            <div class="data-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
+                <h4 class="text-orange-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 03</h4>
+                <div class="text-4xl font-black mb-4">12+</div>
+                <p class="text-gray-500 text-sm">Custom EDA dashboards built for executive decision making.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <h2 class="text-5xl font-black mb-4">Featured <span class="text-gradient">Insights</span></h2>
+                    <p class="text-gray-500">Turning raw numbers into actionable business strategies.</p>
+                </div>
+                <div class="text-right">
+                    <span class="mono-font text-xs text-gray-600">PROJECT_ARCHIVE_2026</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-6">
+                <div class="md:col-span-8 data-card rounded-[2.5rem] overflow-hidden group reveal">
+                    <div class="p-12 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex gap-2 mb-6">
+                                <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono-font">PANDAS</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono-font">SCIKIT-LEARN</span>
+                            </div>
+                            <h3 class="text-4xl font-bold mb-4 group-hover:text-teal-400 transition">Market Volatility Predictor</h3>
+                            <p class="text-gray-400 text-lg max-w-xl">
+                                Built a multivariate regression model to forecast stock market fluctuations with an 89% confidence interval using historical trade data.
+                            </p>
+                        </div>
+                        <div class="mt-12 flex items-center gap-4 text-sm font-bold">
+                            <a href="#" class="flex items-center gap-2 hover:underline">Case Study <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 data-card rounded-[2.5rem] p-8 reveal" style="transition-delay: 150ms;">
+                    <i data-lucide="users" class="w-10 h-10 text-purple-500 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">User Segmentation</h3>
+                    <p class="text-gray-500 mb-6">K-Means clustering applied to 1M+ retail users to define persona-based marketing hooks.</p>
+                    <div class="pt-6 border-t border-white/5">
+                        <span class="text-xs mono-font text-purple-400">CLUSTER ANALYSIS</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 data-card rounded-[2.5rem] p-8 reveal">
+                    <i data-lucide="bar-chart" class="w-10 h-10 text-orange-500 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Sales Forecaster</h3>
+                    <p class="text-gray-500 mb-6">Time-series analysis using Prophet and ARIMA to reduce inventory waste by 15%.</p>
+                    <div class="pt-6 border-t border-white/5">
+                        <span class="text-xs mono-font text-orange-400">TIME SERIES</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-8 data-card rounded-[2.5rem] p-12 flex flex-col md:flex-row gap-8 reveal" style="transition-delay: 150ms;">
+                    <div class="flex-1">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-teal-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4">Fraud Detection Engine</h3>
+                        <p class="text-gray-500">Anomaly detection system for real-time banking transactions using Isolation Forests.</p>
+                    </div>
+                    <div class="flex-1 bg-white/5 rounded-2xl p-6 mono-font text-[11px] text-gray-500">
+                        <div class="flex justify-between mb-2"><span>Precision:</span> <span class="text-white">0.94</span></div>
+                        <div class="flex justify-between mb-2"><span>Recall:</span> <span class="text-white">0.91</span></div>
+                        <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                            <div class="bg-teal-500 h-full w-[94%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="py-32 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-16">The Scientist's <span class="text-gradient">Toolkit</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="data-card p-6 rounded-xl">
+                    <div class="text-teal-400 mb-3 flex justify-center"><i data-lucide="code-2"></i></div>
+                    <p class="font-bold">Python</p>
+                </div>
+                <div class="data-card p-6 rounded-xl">
+                    <div class="text-purple-400 mb-3 flex justify-center"><i data-lucide="table"></i></div>
+                    <p class="font-bold">SQL / NoSQL</p>
+                </div>
+                <div class="data-card p-6 rounded-xl">
+                    <div class="text-orange-400 mb-3 flex justify-center"><i data-lucide="pie-chart"></i></div>
+                    <p class="font-bold">Tableau/PowerBI</p>
+                </div>
+                <div class="data-card p-6 rounded-xl">
+                    <div class="text-blue-400 mb-3 flex justify-center"><i data-lucide="cpu"></i></div>
+                    <p class="font-bold">PyTorch</p>
+                </div>
+                <div class="data-card p-6 rounded-xl">
+                    <div class="text-pink-400 mb-3 flex justify-center"><i data-lucide="layers"></i></div>
+                    <p class="font-bold">BigQuery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl font-black mb-8">Let's solve <br>complex problems.</h2>
+            <div class="data-card p-12 rounded-[3rem] relative overflow-hidden">
+                <div class="relative z-10">
+                    <p class="text-gray-400 mb-10 text-lg">Currently accepting Data Science consultations and full-time opportunities for 2026.</p>
+                    <a href="mailto:mayuri.sharma@example.com" class="text-3xl font-bold hover:text-teal-400 transition break-all">
+                        mayuri.sharma@datascience.io
+                    </a>
+                    <div class="flex justify-center gap-8 mt-12">
+                        <a href="#" class="text-gray-500 hover:text-white transition">LinkedIn</a>
+                        <a href="#" class="text-gray-500 hover:text-white transition">Twitter</a>
+                        <a href="#" class="text-gray-500 hover:text-white transition">Kaggle</a>
+                    </div>
+                </div>
+                <div class="absolute top-0 right-0 w-40 h-40 bg-teal-500/10 blur-[80px]"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
+        <p>&copy; 2026 Mayuri Sharma. Engineered for Precision.</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Cursor Glow Effect
+        const glow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Scroll Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
