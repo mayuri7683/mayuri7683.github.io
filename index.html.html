@@ -3,304 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayuri Sharma | Data Science Specialist</title>
+    <title>Junaid Alam | AI Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { scroll-behavior: smooth; }
         body { 
             background-color: #050505; 
             color: #e2e8f0; 
-            font-family: 'Outfit', sans-serif; 
-            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif; 
+        }
+        
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Custom Grain Overlay */
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03; pointer-events: none; z-index: 50;
         }
 
-        /* Animated Mesh Gradient Background */
-        .bg-gradient-mesh {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(at 0% 0%, rgba(76, 29, 149, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(13, 148, 136, 0.1) 0px, transparent 50%);
-            z-index: -1;
-        }
-
-        /* New Floating Card Style */
-        .data-card {
-            background: rgba(15, 15, 20, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Border Glow Effect */
+        .glow-border {
             position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+        .glow-border:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
         }
 
-        .data-card:hover {
-            transform: scale(1.02);
-            border-color: rgba(167, 139, 250, 0.4);
-            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
+        /* Nav Link Animation */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
         }
-
-        .text-gradient {
-            background: linear-gradient(to right, #a78bfa, #2dd4bf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .nav-link::after {
+            content: '';
+            position: absolute; width: 0; height: 1px;
+            bottom: 0; left: 0; background: #3b82f6;
+            transition: width 0.3s ease;
         }
+        .nav-link:hover::after { width: 100%; }
 
-        .mono-font { font-family: 'JetBrains Mono', monospace; }
-
-        /* Smooth Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Cursor Spotlight */
-        #cursor-glow {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.07) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            transition: width 0.3s, height 0.3s;
-        }
+        .float-anim { animation: float 4s ease-in-out infinite; }
     </style>
 </head>
-<body class="selection:bg-teal-500/30">
+<body class="selection:bg-blue-500/30">
+    <div class="grain"></div>
 
-    <div class="bg-gradient-mesh"></div>
-    <div id="cursor-glow"></div>
-
-    <nav class="fixed w-full top-0 z-50 border-b border-white/5 bg-black/20 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="text-xl font-extrabold tracking-tight">
-                MAYURI<span class="text-teal-400">.</span>SHARMA
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400 uppercase tracking-widest">
-                <a href="#about" class="hover:text-white transition">Analysis</a>
-                <a href="#projects" class="hover:text-white transition">Insights</a>
-                <a href="#stack" class="hover:text-white transition">Stack</a>
-                <a href="#contact" class="px-5 py-2 border border-teal-500/50 rounded-full text-teal-400 hover:bg-teal-500/10 transition">Connect</a>
-            </div>
+    <nav class="fixed left-0 top-0 h-full w-20 hidden lg:flex flex-col items-center py-8 border-r border-white/5 z-50 bg-[#050505]">
+        <div class="text-blue-500 font-bold text-xl mb-12">JA.</div>
+        <div class="flex-1 flex flex-col justify-center space-y-12 rotate-180" style="writing-mode: vertical-rl;">
+            <a href="#contact" class="nav-link text-xs uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">Contact</a>
+            <a href="#certificates" class="nav-link text-xs uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">Credentials</a>
+            <a href="#skills" class="nav-link text-xs uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">Stack</a>
+            <a href="#projects" class="nav-link text-xs uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">Work</a>
+            <a href="#home" class="nav-link text-xs uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">Home</a>
         </div>
     </nav>
 
-    <section id="about" class="min-h-screen flex items-center px-6 pt-20">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-widest">
-                    Data Scientist | 2026 Strategy
+    <main class="lg:ml-20">
+        <section id="home" class="min-h-screen flex flex-col justify-center px-8 md:px-20 relative overflow-hidden">
+            <div class="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
+            
+            <div class="max-w-4xl relative z-10">
+                <div class="mono text-blue-500 text-sm mb-6 flex items-center gap-3">
+                    <span class="w-12 h-[1px] bg-blue-500"></span>
+                    AI & DATA SCIENCE ENGINEER
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9]">
-                    Mining <span class="text-gradient">Wisdom</span> <br>from Chaos.
+                <h1 class="text-7xl md:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]">
+                    Junaid <span class="text-transparent" style="-webkit-text-stroke: 1px #475569;">Alam</span>
                 </h1>
-                <p class="text-gray-400 text-xl max-w-xl leading-relaxed mb-10">
-                    I am Mayuri Sharma. I specialize in transforming unstructured data into predictive assets. From statistical modeling to advanced visualization, I build the narrative behind the numbers.
+                <p class="text-xl md:text-2xl text-gray-400 max-w-2xl leading-relaxed mb-10">
+                    Architecting the future with <span class="text-white border-b border-blue-500">Generative AI</span> and 
+                    predictive analytics. Turning raw complexity into elegant, agentic solutions.
                 </p>
-                <div class="flex flex-wrap gap-5">
-                    <a href="#projects" class="px-8 py-4 bg-teal-500 text-black font-bold rounded-xl hover:bg-teal-400 transition-all shadow-lg shadow-teal-500/20">View Case Studies</a>
-                    <a href="https://github.com/mayuri-sharma" class="px-8 py-4 data-card rounded-xl font-bold flex items-center gap-2">
-                        <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                
+                <div class="flex flex-wrap gap-6">
+                    <a href="#projects" class="px-8 py-4 bg-white text-black font-bold hover:bg-blue-500 hover:text-white transition-all duration-300">
+                        View Projects_
+                    </a>
+                    <a href="mailto:junaidalam542@gmail.com" class="px-8 py-4 border border-white/20 font-bold hover:bg-white/5 transition-all">
+                        Get In Touch
                     </a>
                 </div>
             </div>
 
-            <div class="relative reveal" style="transition-delay: 200ms;">
-                <div class="data-card p-10 rounded-[2rem] relative z-10">
-                    <div class="flex justify-between items-start mb-12">
-                        <div class="space-y-1">
-                            <p class="mono-font text-teal-400 text-sm">Status: Operational</p>
-                            <h3 class="text-2xl font-bold">Model_Training.py</h3>
-                        </div>
-                        <i data-lucide="database" class="text-gray-700 w-10 h-10"></i>
-                    </div>
-                    <div class="mono-font text-sm space-y-4 text-gray-400">
-                        <p><span class="text-purple-400">import</span> pandas <span class="text-purple-400">as</span> pd</p>
-                        <p><span class="text-purple-400">from</span> sklearn <span class="text-purple-400">import</span> metrics</p>
-                        <div class="pl-4 border-l-2 border-teal-500/30 space-y-2">
-                            <p>df = pd.read_csv(<span class="text-teal-400">'insights.csv'</span>)</p>
-                            <p>model = MayuriBrain(precision=<span class="text-orange-400">0.99</span>)</p>
-                            <p>model.fit(df.raw_data)</p>
-                        </div>
-                        <p class="text-teal-400 animate-pulse">>>> Generating insights...</p>
-                    </div>
-                </div>
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
-                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-teal-600/20 blur-3xl"></div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 mono text-[10px] text-gray-600 uppercase tracking-[0.5em] animate-bounce">
+                Scroll to explore
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="data-card p-8 rounded-2xl reveal">
-                <h4 class="text-teal-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 01</h4>
-                <div class="text-4xl font-black mb-4">95.4%</div>
-                <p class="text-gray-500 text-sm">Average prediction accuracy across classification models.</p>
-            </div>
-            <div class="data-card p-8 rounded-2xl reveal" style="transition-delay: 100ms;">
-                <h4 class="text-purple-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 02</h4>
-                <div class="text-4xl font-black mb-4">500GB+</div>
-                <p class="text-gray-500 text-sm">Data pipelines optimized for high-velocity streaming.</p>
-            </div>
-            <div class="data-card p-8 rounded-2xl reveal" style="transition-delay: 200ms;">
-                <h4 class="text-orange-400 font-bold mb-2 uppercase text-xs tracking-tighter">Metric 03</h4>
-                <div class="text-4xl font-black mb-4">12+</div>
-                <p class="text-gray-500 text-sm">Custom EDA dashboards built for executive decision making.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <section id="projects" class="py-32 px-8 md:px-20">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                 <div>
-                    <h2 class="text-5xl font-black mb-4">Featured <span class="text-gradient">Insights</span></h2>
-                    <p class="text-gray-500">Turning raw numbers into actionable business strategies.</p>
+                    <h2 class="text-5xl font-bold mb-4">Selected Work</h2>
+                    <p class="text-gray-500 mono">/ 01 -- PROJECT_LOG</p>
                 </div>
                 <div class="text-right">
-                    <span class="mono-font text-xs text-gray-600">PROJECT_ARCHIVE_2026</span>
+                    <span class="text-8xl font-bold text-white/5">2026</span>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-12 gap-6">
-                <div class="md:col-span-8 data-card rounded-[2.5rem] overflow-hidden group reveal">
-                    <div class="p-12 h-full flex flex-col justify-between">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group">
+                    <div class="glow-border bg-[#0a0a0a] p-10 aspect-video flex flex-col justify-between mb-6">
+                        <i data-lucide="brain-circuit" class="w-10 h-10 text-blue-500"></i>
                         <div>
-                            <div class="flex gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono-font">PANDAS</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] mono-font">SCIKIT-LEARN</span>
+                            <h3 class="text-3xl font-bold mb-2">Sentiment Analysis Engine</h3>
+                            <div class="flex gap-4 text-xs mono text-gray-500">
+                                <span>NLP</span> <span>SCIKIT-LEARN</span> <span>TF-IDF</span>
                             </div>
-                            <h3 class="text-4xl font-bold mb-4 group-hover:text-teal-400 transition">Market Volatility Predictor</h3>
-                            <p class="text-gray-400 text-lg max-w-xl">
-                                Built a multivariate regression model to forecast stock market fluctuations with an 89% confidence interval using historical trade data.
-                            </p>
-                        </div>
-                        <div class="mt-12 flex items-center gap-4 text-sm font-bold">
-                            <a href="#" class="flex items-center gap-2 hover:underline">Case Study <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
                         </div>
                     </div>
+                    <p class="text-gray-400 leading-relaxed">Deep-dive analysis extracting market sentiment from massive review datasets using optimized pipelines.</p>
                 </div>
 
-                <div class="md:col-span-4 data-card rounded-[2.5rem] p-8 reveal" style="transition-delay: 150ms;">
-                    <i data-lucide="users" class="w-10 h-10 text-purple-500 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">User Segmentation</h3>
-                    <p class="text-gray-500 mb-6">K-Means clustering applied to 1M+ retail users to define persona-based marketing hooks.</p>
-                    <div class="pt-6 border-t border-white/5">
-                        <span class="text-xs mono-font text-purple-400">CLUSTER ANALYSIS</span>
-                    </div>
-                </div>
-
-                <div class="md:col-span-4 data-card rounded-[2.5rem] p-8 reveal">
-                    <i data-lucide="bar-chart" class="w-10 h-10 text-orange-500 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Sales Forecaster</h3>
-                    <p class="text-gray-500 mb-6">Time-series analysis using Prophet and ARIMA to reduce inventory waste by 15%.</p>
-                    <div class="pt-6 border-t border-white/5">
-                        <span class="text-xs mono-font text-orange-400">TIME SERIES</span>
-                    </div>
-                </div>
-
-                <div class="md:col-span-8 data-card rounded-[2.5rem] p-12 flex flex-col md:flex-row gap-8 reveal" style="transition-delay: 150ms;">
-                    <div class="flex-1">
-                        <i data-lucide="shield-check" class="w-10 h-10 text-teal-500 mb-6"></i>
-                        <h3 class="text-2xl font-bold mb-4">Fraud Detection Engine</h3>
-                        <p class="text-gray-500">Anomaly detection system for real-time banking transactions using Isolation Forests.</p>
-                    </div>
-                    <div class="flex-1 bg-white/5 rounded-2xl p-6 mono-font text-[11px] text-gray-500">
-                        <div class="flex justify-between mb-2"><span>Precision:</span> <span class="text-white">0.94</span></div>
-                        <div class="flex justify-between mb-2"><span>Recall:</span> <span class="text-white">0.91</span></div>
-                        <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-full w-[94%]"></div>
+                <div class="group mt-0 md:mt-20">
+                    <div class="glow-border bg-[#0a0a0a] p-10 aspect-video flex flex-col justify-between mb-6">
+                        <i data-lucide="home" class="w-10 h-10 text-blue-500"></i>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2">Bengaluru Predictor</h3>
+                            <div class="flex gap-4 text-xs mono text-gray-500">
+                                <span>XGBOOST</span> <span>REGRESSION</span> <span>EDA</span>
+                            </div>
                         </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Advanced real estate forecasting model using XGBoost to identify market shifts with 87% accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-32 bg-[#080808] px-8 md:px-20">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-center text-4xl font-bold mb-20">Technical Stack</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5">
+                    <div class="bg-[#050505] p-12 flex flex-col items-center group hover:bg-blue-950/20 transition-colors">
+                        <i data-lucide="code-2" class="w-8 h-8 mb-6 text-blue-500 group-hover:scale-110 transition"></i>
+                        <span class="font-bold">Python</span>
+                        <span class="text-xs text-gray-600 mt-2 mono">Numpy, Pandas</span>
+                    </div>
+                    <div class="bg-[#050505] p-12 flex flex-col items-center group hover:bg-blue-950/20 transition-colors">
+                        <i data-lucide="zap" class="w-8 h-8 mb-6 text-blue-500 group-hover:scale-110 transition"></i>
+                        <span class="font-bold">Gen AI</span>
+                        <span class="text-xs text-gray-600 mt-2 mono">LangChain, RAG</span>
+                    </div>
+                    <div class="bg-[#050505] p-12 flex flex-col items-center group hover:bg-blue-950/20 transition-colors">
+                        <i data-lucide="database" class="w-8 h-8 mb-6 text-blue-500 group-hover:scale-110 transition"></i>
+                        <span class="font-bold">SQL</span>
+                        <span class="text-xs text-gray-600 mt-2 mono">MySQL, Excel</span>
+                    </div>
+                    <div class="bg-[#050505] p-12 flex flex-col items-center group hover:bg-blue-950/20 transition-colors">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8 mb-6 text-blue-500 group-hover:scale-110 transition"></i>
+                        <span class="font-bold">Tableau</span>
+                        <span class="text-xs text-gray-600 mt-2 mono">Visualization</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="stack" class="py-32 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-16">The Scientist's <span class="text-gradient">Toolkit</span></h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="data-card p-6 rounded-xl">
-                    <div class="text-teal-400 mb-3 flex justify-center"><i data-lucide="code-2"></i></div>
-                    <p class="font-bold">Python</p>
+        <section id="certificates" class="py-32 px-8 md:px-20">
+            <h2 class="text-4xl font-bold mb-16">Verified Credentials</h2>
+            <div class="space-y-4">
+                <a href="https://www.credly.com/badges/66099d7a-41ad-4d20-9a69-7740b799b961/public_url" target="_blank" 
+                   class="flex items-center justify-between p-8 border border-white/5 hover:bg-white/5 transition group">
+                    <span class="text-2xl font-medium group-hover:translate-x-4 transition-transform">IBM Data Science Professional</span>
+                    <i data-lucide="arrow-up-right" class="text-blue-500 opacity-0 group-hover:opacity-100 transition"></i>
+                </a>
+                <a href="https://www.credly.com/badges/15f8ef58-53cb-487c-a5da-e5507ff2a3b3/linked_in_profile" target="_blank" 
+                   class="flex items-center justify-between p-8 border border-white/5 hover:bg-white/5 transition group">
+                    <span class="text-2xl font-medium group-hover:translate-x-4 transition-transform">IBM Machine Learning Specialist</span>
+                    <i data-lucide="arrow-up-right" class="text-blue-500 opacity-0 group-hover:opacity-100 transition"></i>
+                </a>
                 </div>
-                <div class="data-card p-6 rounded-xl">
-                    <div class="text-purple-400 mb-3 flex justify-center"><i data-lucide="table"></i></div>
-                    <p class="font-bold">SQL / NoSQL</p>
-                </div>
-                <div class="data-card p-6 rounded-xl">
-                    <div class="text-orange-400 mb-3 flex justify-center"><i data-lucide="pie-chart"></i></div>
-                    <p class="font-bold">Tableau/PowerBI</p>
-                </div>
-                <div class="data-card p-6 rounded-xl">
-                    <div class="text-blue-400 mb-3 flex justify-center"><i data-lucide="cpu"></i></div>
-                    <p class="font-bold">PyTorch</p>
-                </div>
-                <div class="data-card p-6 rounded-xl">
-                    <div class="text-pink-400 mb-3 flex justify-center"><i data-lucide="layers"></i></div>
-                    <p class="font-bold">BigQuery</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-5xl font-black mb-8">Let's solve <br>complex problems.</h2>
-            <div class="data-card p-12 rounded-[3rem] relative overflow-hidden">
-                <div class="relative z-10">
-                    <p class="text-gray-400 mb-10 text-lg">Currently accepting Data Science consultations and full-time opportunities for 2026.</p>
-                    <a href="mailto:mayuri.sharma@example.com" class="text-3xl font-bold hover:text-teal-400 transition break-all">
-                        mayuri.sharma@datascience.io
+        <section id="contact" class="py-32 px-8 md:px-20 bg-blue-600">
+            <div class="max-w-4xl text-black">
+                <h2 class="text-6xl md:text-8xl font-bold mb-12 tracking-tighter">Let's build something intelligent.</h2>
+                <div class="flex flex-col md:flex-row gap-12 items-start">
+                    <a href="mailto:junaidalam542@gmail.com" class="text-2xl font-bold border-b-4 border-black pb-2 hover:text-white hover:border-white transition-all">
+                        junaidalam542@gmail.com
                     </a>
-                    <div class="flex justify-center gap-8 mt-12">
-                        <a href="#" class="text-gray-500 hover:text-white transition">LinkedIn</a>
-                        <a href="#" class="text-gray-500 hover:text-white transition">Twitter</a>
-                        <a href="#" class="text-gray-500 hover:text-white transition">Kaggle</a>
+                    <div class="flex gap-6">
+                        <a href="https://github.com/junaid487" class="font-bold uppercase tracking-widest text-sm hover:text-white transition">Github</a>
+                        <a href="https://www.linkedin.com/in/junaid-alam-81aba93a8/" class="font-bold uppercase tracking-widest text-sm hover:text-white transition">LinkedIn</a>
                     </div>
                 </div>
-                <div class="absolute top-0 right-0 w-40 h-40 bg-teal-500/10 blur-[80px]"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-12 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
-        <p>&copy; 2026 Mayuri Sharma. Engineered for Precision.</p>
-    </footer>
+        <footer class="py-12 px-8 md:px-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs mono">
+            <p>© 2026 JUNAID ALAM. ALL RIGHTS RESERVED.</p>
+            <p>DESIGNED FOR THE NEXT ERA OF AI.</p>
+        </footer>
+    </main>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
-
-        // Cursor Glow Effect
-        const glow = document.getElementById('cursor-glow');
-        window.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-
-        // Scroll Reveal Logic
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
